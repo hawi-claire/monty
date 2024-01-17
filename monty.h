@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
