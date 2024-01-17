@@ -82,4 +82,8 @@ void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 
+/*--- STRING OPERATIONS ---*/
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+
 #endif /* MONTY_H */
