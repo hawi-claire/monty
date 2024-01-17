@@ -102,6 +102,7 @@ void execute(operation_t operation, int line_number)
 
 		if (strs_match == 0)
 		{
+			value = operation.value;
 			instruction[i].f(&stack, line_number);
 		}
 	}

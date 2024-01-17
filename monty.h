@@ -78,5 +78,6 @@ void add(stack_t **stack, unsigned int line_number);
 
 /*--- GLOBAL VARIABLES ---*/
 extern stack_t *stack;
+extern int value;
 
 #endif /* MONTY_H */
