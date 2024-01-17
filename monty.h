@@ -64,6 +64,7 @@ typedef struct operation_s
 } operation_t;
 
 /*--- UTILITY FUNCTIONS ---*/
+<<<<<<< HEAD
 void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
@@ -81,6 +82,10 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+=======
+void replace_dollar_char(char *s);
+operation_t get_instruction(char *s);
+>>>>>>> c299097 (header: add get_instruction prototype)
 
 /*--- STRING OPERATIONS ---*/
 int _strlen(char *s);
