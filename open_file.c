@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
 	char *lineptr = NULL;
 	unsigned int line_number = 0;
 
+	stack = NULL;
+
 	handle_args(argc);
 
 	monty_file = open_monty_file(argv[1]);
