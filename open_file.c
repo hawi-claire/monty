@@ -1,48 +1,67 @@
 #include "monty.h"
-#include <stdio.h>
 
 /**
- * open_my_file - opens the file in read mode
- * @filename: file name
- * @r: mode of operation
+ * main - runs the monty program
+ * @argc: number of args
+ * @argv: array of args
  *
- * Return: file pointer, null if error occurs
+ * Return: always 0 (success)
  */
 
-FILE *open_my_file(const char *filename)
+int main(int argc, char *argv[])
 {
-	FILE *fp = fopen(filename, "r");
+	FILE *monty_file;
+	size_t n;
+	operation_t operation;
 
-	if (fp == NULL)
+	handle_args(argc);
+
+	ssize_t bytes_read = 0;
+	char *lineptr = NULL;
+	char **free = &lineptr;
+
+	monty_file = open_monty_file(argv[1]);
+
+	do {
+		getline(&lineptr, &n, monty_file);
+		operation = get_instruction(lineptr);
+		printf("opcode: %s\nvalue: %d\n", operation.opcode, operation.value);
+	} while (bytes_read != -1);
+
+	/* free *free */
+}
+
+
+/**
+ * open_monty_file - opens the file in read mode
+ * @filename: file name
+ *
+ * Return: file pointer
+ */
+
+FILE *open_monty_file(const char *filename)
+{
+	FILE *monty_file = fopen(filename, "r");
+
+	if (monty_file == NULL)
 	{
 		fprintf(stderr, "Error opening file: %s\n", filename);
-
-		return fp;
+		exit(EXIT_FAILURE);
 	}
 }
 
 /**
- * main - prints all args it receives
- * @argc: number of args
- * @argv: array of args
+ * handle_args - handles arguments passed to the program
+ * @argc: number of arguments passed to the program
  *
- * return:always 0 (success)
- */
-int main(int argc, char *argv[])
+ * Return: Nothing
+*/
 
+void handle_args(int argc)
 {
-
-        int j;
-
-
-        for (j = 0; j < argc; j++)
-
-        {
-
-                printf("%s\n", argv[j]);
-
-        }
-
-        return (0);
-
+	if (argc != 2)
+	{
+		fprint(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 }

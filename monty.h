@@ -60,6 +60,8 @@ typedef struct operation_s
 /*--- UTILITY FUNCTIONS ---*/
 void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
+FILE *open_monty_file(const char *filename);
+void handle_args(int argc);
 
 /*--- STRING OPERATIONS ---*/
 int _strlen(char *s);
