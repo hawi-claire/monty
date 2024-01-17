@@ -2,8 +2,8 @@
 #include <stdio.h>
 
 /**
- * fopen - opens the file in read mode
- * @monty.h: file name
+ * open_my_file - opens the file in read mode
+ * @filename: file name
  * @r: mode of operation
  *
  * Return: file pointer, null if error occurs
