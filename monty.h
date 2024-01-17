@@ -59,6 +59,10 @@ typedef struct operation_s
 /*--- UTILITY FUNCTIONS ---*/
 void replace_dollar_char(char *s);
 
+/*--- STRING OPERATIONS ---*/
+int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
+
 #endif /* MONTY_H */
 #ifndef MONTY_H
 #define MONTY_H
