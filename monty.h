@@ -11,8 +11,8 @@
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
 
-/*--- GLOBAL VARIABLES ---*/
-
+/*--- MACROS ---*/
+#define BUFF_SIZE 1024
 
 /*--- DATA STRUCTURES ---*/
 /**
@@ -60,9 +60,24 @@ typedef struct operation_s
 /*--- UTILITY FUNCTIONS ---*/
 void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
+FILE *open_monty_file(const char *filename);
+void handle_args(int argc);
 
 /*--- STRING OPERATIONS ---*/
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
+
+/*--- STACK OPERATIONS ----*/
+void pop(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+
+/*--- GLOBAL VARIABLES ---*/
+extern stack_t *stack;
+extern int value;
 
 #endif /* MONTY_H */
