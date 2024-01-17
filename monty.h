@@ -58,7 +58,7 @@ typedef struct operation_s
 } operation_t;
 
 /*--- UTILITY FUNCTIONS ---*/
-void replace_dollar_char(char *s);
+void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
 
 /*--- STRING OPERATIONS ---*/

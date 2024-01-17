@@ -13,11 +13,11 @@ operation_t get_instruction(char *s)
 	char *token, *opcode, *value_string;
 	int value;
 
-	replace_dollar_char(s);
+	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * 5);
 
 	/* todo: print to standard error. don't use printf */
-	/* todo: the string opcode should be freed by the caller function*/
+	/* todo: the string opcode should be freed by the caller*/
 	if (!opcode)
 	{
 		printf("Error: malloc failed");
@@ -25,7 +25,7 @@ operation_t get_instruction(char *s)
 	}
 
 	token = strtok(s, " ");
-	opcode = _strcpy(opcode, token);
+	opcode = strcpy(opcode, token);
 
 	token = strtok(NULL, " ");
 
