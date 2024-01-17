@@ -11,14 +11,8 @@
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
 
-/*--- GLOBAL VARIABLES ---*/
-extern stack;
-
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
-
-/*--- GLOBAL VARIABLES ---*/
-
 
 /*--- DATA STRUCTURES ---*/
 /**
@@ -82,8 +76,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 
-/*--- STRING OPERATIONS ---*/
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
+/*--- GLOBAL VARIABLES ---*/
+extern stack_t *stack;
 
 #endif /* MONTY_H */
