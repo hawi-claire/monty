@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
 	FILE *monty_file;
 	size_t n;
 	operation_t operation;
-	
+
 	ssize_t bytes_read = 0;
 	char *lineptr = NULL;
-	/* char **free = &lineptr; */
+	unsigned int line_number = 0;
 
 	handle_args(argc);
 
@@ -25,10 +25,12 @@ int main(int argc, char *argv[])
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);
 		operation = get_instruction(lineptr);
-		printf("opcode: %s\nvalue: %d\n", operation.opcode, operation.value);
+		line_number++;
+		execute(operation, line_number);
+		free(operation.opcode);
 	} while (bytes_read != -1);
 
-	/* free *free */
+	free(lineptr);
 
 	return (0);
 }
@@ -68,4 +70,38 @@ void handle_args(int argc)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+}
+
+
+/**
+ * execute - executes a stack operation
+ * @operation: a struct that contains opcode and value
+ * @line_number: the current operation
+ * Return: Nothing
+*/
+
+void execute(operation_t operation, int line_number)
+{
+	int i, strs_match;
+
+	instruction_t instruction[7] = {
+		{"push", push},
+		{"pop", pop},
+		{"pall", pall},
+		{"pint", pint},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop}
+	};
+
+	for (i = 0; i < 7; i++)
+	{
+		strs_match = strcmp(operation.opcode, instruction[i].opcode);
+
+		if (strs_match == 0)
+		{
+			instruction[i].f(&stack, line_number);
+		}
+	}
+
 }
