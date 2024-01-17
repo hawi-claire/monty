@@ -12,7 +12,7 @@
 #define BUFF_SIZE 1024
 
 /*--- GLOBAL VARIABLES ---*/
-
+extern stack;
 
 /*--- DATA STRUCTURES ---*/
 /**
@@ -66,5 +66,14 @@ void handle_args(int argc);
 /*--- STRING OPERATIONS ---*/
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
+
+/*--- STACK OPERATIONS ----*/
+void pop(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
