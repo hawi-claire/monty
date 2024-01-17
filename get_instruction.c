@@ -10,7 +10,7 @@
 operation_t get_instruction(char *s)
 {
 	operation_t operation;
-	char *token, *opcode, *value_string;
+	char *token, *opcode;
 	int value;
 
 	replace_newline_char(s);

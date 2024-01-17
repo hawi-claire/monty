@@ -13,22 +13,24 @@ int main(int argc, char *argv[])
 	FILE *monty_file;
 	size_t n;
 	operation_t operation;
-
-	handle_args(argc);
-
+	
 	ssize_t bytes_read = 0;
 	char *lineptr = NULL;
-	char **free = &lineptr;
+	/* char **free = &lineptr; */
+
+	handle_args(argc);
 
 	monty_file = open_monty_file(argv[1]);
 
 	do {
-		getline(&lineptr, &n, monty_file);
+		bytes_read = getline(&lineptr, &n, monty_file);
 		operation = get_instruction(lineptr);
 		printf("opcode: %s\nvalue: %d\n", operation.opcode, operation.value);
 	} while (bytes_read != -1);
 
 	/* free *free */
+
+	return (0);
 }
 
 
@@ -48,6 +50,8 @@ FILE *open_monty_file(const char *filename)
 		fprintf(stderr, "Error opening file: %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
+
+	return (monty_file);
 }
 
 /**
@@ -61,7 +65,7 @@ void handle_args(int argc)
 {
 	if (argc != 2)
 	{
-		fprint(stderr, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 }
