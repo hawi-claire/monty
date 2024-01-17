@@ -1,1 +1,8 @@
-This is the readme file for 0x19. C - Stacks, Queues - LIFO, FIFO.
+# Monty
+
+An interpreter for Monty ByteCodes files.
+
+## Authors
+
+1. Claire Hawi.
+2. George Ikigu.
