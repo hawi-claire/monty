@@ -25,7 +25,7 @@ operation_t get_instruction(char *s)
 	}
 
 	token = strtok(s, " ");
-	opcode = strcpy(opcode, token);
+	opcode = _strcpy(opcode, token);
 
 	token = strtok(NULL, " ");
 
