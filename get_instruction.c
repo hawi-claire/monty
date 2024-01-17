@@ -14,13 +14,13 @@ operation_t get_instruction(char *s)
 	int value;
 
 	replace_newline_char(s);
-	opcode = malloc(sizeof(char) * 5);
+	opcode = malloc(sizeof(char) * BUFF_SIZE);
 
 	/* todo: print to standard error. don't use printf */
 	/* todo: the string opcode should be freed by the caller*/
 	if (!opcode)
 	{
-		printf("Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 

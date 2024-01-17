@@ -106,4 +106,6 @@ void execute(operation_t operation, int line_number)
 		}
 	}
 
+	fprintf(stderr, "L%d: unknown instruction %s", line_number, operation.opcode);
+	exit(EXIT_FAILURE);
 }
