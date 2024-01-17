@@ -6,8 +6,13 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-/*--- DATA STRUCTURES ---*/
+/*--- MACROS ---*/
+#define BUFF_SIZE 1024
 
+/*--- GLOBAL VARIABLES ---*/
+
+
+/*--- DATA STRUCTURES ---*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
