@@ -4,6 +4,7 @@
 /*--- LIBRARIES ---*/
 #include <string.h>
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 /*--- MACROS ---*/
@@ -43,6 +44,17 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct operation_s - opcode and value
+ * @opcode: the opcode
+ * @value: the value
+*/
+
+typedef struct operation_s
+{
+	char *opcode;
+	int value;
+} operation_t;
 
 /*--- UTILITY FUNCTIONS ---*/
 void replace_dollar_char(char *s);
