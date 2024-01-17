@@ -10,6 +10,7 @@
 operation_t get_instruction(char *s)
 {
 	operation_t operation;
+<<<<<<< HEAD
 	char *token, *opcode;
 	int value;
 
@@ -18,6 +19,16 @@ operation_t get_instruction(char *s)
 
 	/* todo: print to standard error. don't use printf */
 	/* todo: the string opcode should be freed by the caller*/
+=======
+	char *token, *opcode, *value_string;
+	int value;
+
+	replace_dollar_char(s);
+	opcode = malloc(sizeof(char) * 5);
+
+	/* todo: print to standard error. don't use printf */
+	/* todo: the string opcode should be freed by the caller function*/
+>>>>>>> 7650eb9 (feat: add ability to tokenize the command)
 	if (!opcode)
 	{
 		printf("Error: malloc failed");
