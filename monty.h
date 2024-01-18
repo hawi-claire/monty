@@ -47,24 +47,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct operation_s - opcode and value
- * @opcode: the opcode
- * @value: the value
-*/
-
-typedef struct operation_s
-{
-	char *opcode;
-	int value;
-} operation_t;
-
 /*--- UTILITY FUNCTIONS ---*/
 void replace_newline_char(char *s);
-operation_t get_instruction(char *s);
+char *get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
-void execute(operation_t operation, int line_number, stack_t **stack);
+void execute(char *opcode, int line_number, stack_t **stack);
 
 /*--- STACK OPERATIONS ----*/
 void pop(stack_t **stack, unsigned int line_number);

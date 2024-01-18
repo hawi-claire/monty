@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	FILE *monty_file;
 	size_t n;
-	operation_t operation;
+	char *opcode;
 
 	ssize_t bytes_read = 0;
 	char *lineptr = NULL;
@@ -27,10 +27,10 @@ int main(int argc, char *argv[])
 
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);
-		operation = get_instruction(lineptr);
+		opcode = get_instruction(lineptr);
 		line_number++;
-		execute(operation, line_number, &stack);
-		free(operation.opcode);
+		execute(opcode, line_number, &stack);
+		free(opcode);
 	} while (bytes_read != -1);
 
 	free(lineptr);
@@ -78,14 +78,14 @@ void handle_args(int argc)
 
 /**
  * execute - executes a stack operation
- * @operation: a struct that contains opcode and value
+ * @opcode: the opcode
  * @line_number: the current operation
  * @stack: the head node of a stack_t stack
  *
  * Return: Nothing
 */
 
-void execute(operation_t operation, int line_number, stack_t **stack)
+void execute(char *opcode, int line_number, stack_t **stack)
 {
 	int i, strs_match;
 
@@ -101,7 +101,7 @@ void execute(operation_t operation, int line_number, stack_t **stack)
 
 	for (i = 0; i < 7; i++)
 	{
-		strs_match = strcmp(operation.opcode, instruction[i].opcode);
+		strs_match = strcmp(opcode, instruction[i].opcode);
 
 		if (strs_match == 0)
 		{
@@ -109,7 +109,7 @@ void execute(operation_t operation, int line_number, stack_t **stack)
 		}
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s", line_number, operation.opcode);
+	fprintf(stderr, "L%d: unknown instruction %s", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
 
@@ -121,18 +121,16 @@ void execute(operation_t operation, int line_number, stack_t **stack)
  * Return: a structure containing opcode and value
 */
 
-operation_t get_instruction(char *s)
+char *get_instruction(char *s)
 {
-	operation_t operation;
 	char *token, *opcode;
 
-	int global_push_value = 0;
+	int global_push_value;
 
 	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
 
-	/* todo: print to standard error. don't use printf */
-	/* todo: the string opcode should be freed by the caller*/
+	/* todo: the string opcode should be freed by the caller */
 	if (!opcode)
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -149,7 +147,5 @@ operation_t get_instruction(char *s)
 		global_push_value = atoi(token);
 	}
 
-	operation.opcode = opcode;
-	operation.value = global_push_value;
-	return (operation);
+	return (opcode);
 }
