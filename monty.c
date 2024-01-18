@@ -114,6 +114,9 @@ void execute(char *opcode, int line_number, stack_t **stack)
 		{"nop", nop}
 	};
 
+	if (opcode[0] == '#')
+		return;
+
 	for (i = 0; i < 7; i++)
 	{
 		strs_match = strcmp(opcode, instruction[i].opcode);
@@ -124,9 +127,6 @@ void execute(char *opcode, int line_number, stack_t **stack)
 			return;
 		}
 	}
-
-	if (opcode[0] == '#')
-		return;
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
