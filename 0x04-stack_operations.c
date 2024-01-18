@@ -11,7 +11,7 @@
 
 void pchar(stack_t **stack, unsigned int line_number)
 {
-	if (!(*stack)->n)
+	if (!(*stack))
 	{
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		free_global_items_and_exit();
