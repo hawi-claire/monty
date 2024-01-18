@@ -131,7 +131,6 @@ void execute(char *opcode, int line_number, stack_t **stack)
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	free_global_items_and_exit();
-	exit(EXIT_FAILURE);
 }
 
 
@@ -163,11 +162,10 @@ char *get_instruction(char *s, unsigned int line_number)
 	opcode = strcpy(opcode, token);
 	token = strtok(NULL, " \n");
 
-	if (token && isdigit(token[0]))
+	if ((token && isdigit(token[0])) || token[0] == '-' && isdigit(token[1]))
 	{
 		initialize_global_value(atoi(token));
 	}
-
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
