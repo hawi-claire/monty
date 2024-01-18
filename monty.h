@@ -84,6 +84,9 @@ void sub(stack_t **head, unsigned int line_number);
 void f_div(stack_t **head, unsigned int line_number);
 void mul(stack_t **head, unsigned int line_number);
 void mod(stack_t **head, unsigned int line_number);
+void f_pstr(stack_t **stack, unsigned int line_number);
+void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number);
+void f_rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number);
 
 /*--- GLOBAL VARIABLES ---*/
 extern global_items_t global_items;
