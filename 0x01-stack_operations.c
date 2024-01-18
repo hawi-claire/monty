@@ -23,6 +23,7 @@ void nop(stack_t **head, unsigned int line_number)
 
 void push(stack_t **head, unsigned int line_number)
 {
+	(void)line_number;
 	stack_t *temp = malloc(sizeof(stack_t));
 
 	if (!temp)
