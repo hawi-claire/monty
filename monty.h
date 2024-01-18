@@ -11,9 +11,6 @@
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
 
-/*--- MACROS ---*/
-#define BUFF_SIZE 1024
-
 /*--- DATA STRUCTURES ---*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -62,10 +59,6 @@ void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
-
-/*--- STRING OPERATIONS ---*/
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
 
 /*--- STACK OPERATIONS ----*/
 void pop(stack_t **stack, unsigned int line_number);
