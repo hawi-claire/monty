@@ -27,10 +27,14 @@ int main(int argc, char *argv[])
 
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);
-		opcode = get_instruction(lineptr);
-		line_number++;
-		execute(opcode, line_number, &stack);
-		free(opcode);
+
+		if (bytes_read > 0)
+		{
+			opcode = get_instruction(lineptr);
+			line_number++;
+			execute(opcode, line_number, &stack);
+			free(opcode);
+		}
 	} while (bytes_read != -1);
 
 	free(lineptr);
