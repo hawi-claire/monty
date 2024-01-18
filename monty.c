@@ -118,7 +118,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 	if (opcode[0] == '#')
 		return;
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 11; i++)
 	{
 		strs_match = strcmp(opcode, instruction[i].opcode);
 
