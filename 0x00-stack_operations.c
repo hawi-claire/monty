@@ -35,6 +35,7 @@ void pint(stack_t **head, unsigned int line_number)
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 
@@ -59,6 +60,7 @@ void pop(stack_t **head, unsigned int line_number)
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 
@@ -83,6 +85,7 @@ void swap(stack_t **head, unsigned int line_number)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 
@@ -110,6 +113,7 @@ void add(stack_t **head, unsigned int line_number)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 

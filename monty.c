@@ -1,5 +1,7 @@
 #include "monty.h"
 
+global_items_t global_items;
+
 /**
  * main - runs the monty program
  * @argc: number of args
@@ -19,6 +21,9 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
 
+	global_items.file = monty_file;
+	global_items.lineptr = lineptr;
+	global_items.head = stack;
 	stack = NULL;
 
 	handle_args(argc);
@@ -142,6 +147,7 @@ char *get_instruction(char *s, unsigned int line_number)
 	if (!opcode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 
@@ -161,11 +167,13 @@ char *get_instruction(char *s, unsigned int line_number)
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 	else if (token && strcmp(opcode, "nop") == 0)
 	{
 		fprintf(stderr, "L%u: usage: nop\n", line_number);
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 

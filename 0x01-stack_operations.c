@@ -1,7 +1,5 @@
 #include "monty.h"
 
-int global_push_value;
-
 /**
  * initialize_global_value - initiliazes global variable value
  * @value: number
@@ -11,9 +9,9 @@ int global_push_value;
 
 int initialize_global_value(int value)
 {
-	global_push_value = value;
+	global_items.value = value;
 
-	return (global_push_value);
+	return (global_items.value);
 }
 
 /**
@@ -47,10 +45,11 @@ void push(stack_t **head, unsigned int line_number)
 	if (!temp)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_global_items();
 		exit(EXIT_FAILURE);
 	}
 
-	temp->n = global_push_value;
+	temp->n = global_items.value;
 	temp->prev = NULL;
 
 	if (*head == NULL)

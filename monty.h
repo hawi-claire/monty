@@ -14,9 +14,6 @@
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
 
-/*--- GLOBAL VARIABLES ---*/
-extern int global_push_value;
-
 /*--- DATA STRUCTURES ---*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,6 +45,22 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_items_s - items that need freeing or to be shared
+ * @head: head of the stack
+ * @lineptr: lineptr for getline to free
+ * @file: monty bytecode file
+ * @value: value for push
+*/
+
+typedef struct global_items_s
+{
+	stack_t *head;
+	char *lineptr;
+	FILE *file;
+	int value;
+} global_items_t;
+
 /*--- UTILITY FUNCTIONS ---*/
 char *get_instruction(char *s, unsigned int line_number);
 FILE *open_monty_file(const char *filename);
@@ -64,5 +77,9 @@ void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
+void free_global_items(void);
+
+/*--- GLOBAL VARIABLES ---*/
+extern global_items_t global_items;
 
 #endif /* MONTY_H */
