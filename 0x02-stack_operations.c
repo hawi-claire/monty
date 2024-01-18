@@ -48,7 +48,6 @@ void sub(stack_t **head, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		free_global_items_and_exit();
-		exit(EXIT_FAILURE);
 	}
 
 	top = *head;
@@ -79,13 +78,8 @@ void f_div(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
-<<<<<<< HEAD
-		printf(stderr, "L%u: can't div, stack too short\n", line_number);
-=======
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
->>>>>>> 550631d41997290958b22ea88a038a9f5f706e05
 		free_global_items_and_exit();
-		exit(EXIT_FAILURE);
 	}
 
 	top = *head;
@@ -119,7 +113,6 @@ void mul(stack_t **head, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		free_global_items_and_exit();
-		exit(EXIT_FAILURE);
 	}
 
 	top = *head;
@@ -154,7 +147,6 @@ void mod(stack_t **head, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		free_global_items_and_exit();
-		exit(EXIT_FAILURE);
 	}
 
 	top = *head;
