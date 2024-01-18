@@ -111,7 +111,8 @@ void execute(char *opcode, int line_number, stack_t **stack)
 		{"pint", pint},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop}
+		{"nop", nop},
+		{"pchar", pchar}
 	};
 
 	if (opcode[0] == '#')
