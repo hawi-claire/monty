@@ -38,7 +38,6 @@ void add(stack_t **head, unsigned int line_number)
 * @line_number: line_number
 * Return: no return
 */
-
 void sub(stack_t **head, unsigned int line_number)
 {
 	stack_t *top, *second;
@@ -79,11 +78,10 @@ void f_div(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
-<<<<<<< HEAD
+
 		printf(stderr, "L%u: can't div, stack too short\n", line_number);
-=======
+
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
->>>>>>> 550631d41997290958b22ea88a038a9f5f706e05
 		free_global_items_and_exit();
 		exit(EXIT_FAILURE);
 	}
@@ -109,7 +107,6 @@ void f_div(stack_t **head, unsigned int line_number)
 * @line_number: line_number
 * Return: no return
 */
-
 void mul(stack_t **head, unsigned int line_number)
 {
 	stack_t *top, *second;
@@ -144,7 +141,6 @@ void mul(stack_t **head, unsigned int line_number)
 * @line_number: line_number
 * Return: no return
 */
-
 void mod(stack_t **head, unsigned int line_number)
 {
 	stack_t *top, *second;
