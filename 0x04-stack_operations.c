@@ -36,30 +36,32 @@ void f_pstr(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		putchar('\n');
 		return;
 	}
 
-	char *str = NULL;
+	stack_t *current = *stack;
 
-	if (is_n_string_pointer)
+	while (current != NULL)
 	{
-	str = (*stack)->n;
-	}
+		int ascii_value = current->n;
 
-	if (str != NULL)
-	{
-		while (*str != '\0')
+		if (ascii_value >= 0 && ascii_value <= 127)
 		{
-			putchar(*str);
-			str++;
+			putchar(ascii_value);
 		}
-		putchar('\n');
+		else
+		{
+			break;
+		}
+
+		if (ascii_value == 0)
+			break;
+
+		current = current->next;
 	}
-	else
-	{
-		fprintf(stderr, "L%d: invalid string type at top of stack\n", line_number);
-	}
+
+	putchar('\n');
 }
 
 /**
@@ -70,6 +72,10 @@ void f_pstr(stack_t **stack, unsigned int line_number)
  */
 void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number)
 {
+	stack_t *tail;
+
+	tail = *stack;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
@@ -95,6 +101,7 @@ void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number)
  */
 void f_rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
+
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
