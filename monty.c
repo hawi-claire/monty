@@ -126,7 +126,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 	}
 
 	if (opcode[0] == '#')
-		nop(stack, line_number);
+		return;
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
