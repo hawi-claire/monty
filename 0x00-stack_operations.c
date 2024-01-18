@@ -9,9 +9,9 @@
 */
 void pall(stack_t **head, unsigned int line_number)
 {
-	(void)line_number;
-
 	stack_t *current = *head;
+
+	(void)line_number;
 
 	while (current != NULL)
 	{
@@ -30,13 +30,15 @@ void pall(stack_t **head, unsigned int line_number)
 
 void pint(stack_t **head, unsigned int line_number)
 {
+	int top_value;
+	
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	int top_value = (*head)->n;
+	top_value = (*head)->n;
 
 	printf("%d\n", top_value);
 }
@@ -52,13 +54,14 @@ void pint(stack_t **head, unsigned int line_number)
 
 void pop(stack_t **head, unsigned int line_number)
 {
+	stack_t *temp = *head;
+	
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack_t *temp = *head;
 	*head = temp->next;
 	free(temp);
 }
@@ -73,19 +76,21 @@ void pop(stack_t **head, unsigned int line_number)
 
 void swap(stack_t **head, unsigned int line_number)
 {
-
+	stack_t *first;
+	stack_t *second;
+	int temp;
+	
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	stack_t *first = *head;
-	stack_t *second = first->next;
 
-	int temp = first->n;
+	first = *head;
+	second = first->next;
+	temp = first->n
 
 	first->n = second->n;
-
 	second->n = temp;
 }
 
