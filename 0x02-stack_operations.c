@@ -84,6 +84,13 @@ void f_div(stack_t **head, unsigned int line_number)
 
 	top = *head;
 	first_value = top->n;
+
+	if (first_value == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		free_global_items_and_exit();
+	}
+
 	second = top->next;
 	second_value = second->n;
 	*head = second->next;
