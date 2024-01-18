@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);
 
-		if (bytes_read > 0)
+		if (bytes_read > 1)
 		{
 			opcode = get_instruction(lineptr);
 			line_number++;
@@ -116,7 +116,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 		}
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s", line_number, opcode);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
 
@@ -151,7 +151,7 @@ char *get_instruction(char *s)
 		initialize_global_value(atoi(token));
 	}
 
-	printf("opcode: %s --> value: %d", opcode, atoi(token));
+	printf("operation: %s\n", opcode);
 
 	return (opcode);
 }
