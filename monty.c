@@ -130,6 +130,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+	free_global_items_and_exit();
 	exit(EXIT_FAILURE);
 }
 
@@ -151,8 +152,7 @@ char *get_instruction(char *s, unsigned int line_number)
 	if (!opcode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 
 	token = strtok(s, " \n");
@@ -161,24 +161,22 @@ char *get_instruction(char *s, unsigned int line_number)
 		return (NULL);
 
 	opcode = strcpy(opcode, token);
-
 	token = strtok(NULL, " \n");
 
 	if (token && isdigit(token[0]))
 	{
 		initialize_global_value(atoi(token));
 	}
+
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 	else if (token && strcmp(opcode, "nop") == 0)
 	{
 		fprintf(stderr, "L%u: usage: nop\n", line_number);
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 
 	return (opcode);

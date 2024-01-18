@@ -78,7 +78,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *head);
-void free_global_items(void);
+void free_global_items_and_exit(void);
 
 /*--- GLOBAL VARIABLES ---*/
 extern global_items_t global_items;
