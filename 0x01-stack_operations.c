@@ -23,12 +23,14 @@ void nop(stack_t **head, unsigned int line_number)
 
 void push(stack_t **head, unsigned int line_number)
 {
+	stack_t *temp;
+
+	temp  = malloc(sizeof(stack_t));
 	(void)line_number;
-	stack_t *temp = malloc(sizeof(stack_t));
 
 	if (!temp)
 	{
-		fprint(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 

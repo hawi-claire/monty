@@ -31,7 +31,7 @@ void pall(stack_t **head, unsigned int line_number)
 void pint(stack_t **head, unsigned int line_number)
 {
 	int top_value;
-	
+
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
@@ -55,7 +55,7 @@ void pint(stack_t **head, unsigned int line_number)
 void pop(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = *head;
-	
+
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
@@ -79,7 +79,7 @@ void swap(stack_t **head, unsigned int line_number)
 	stack_t *first;
 	stack_t *second;
 	int temp;
-	
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
@@ -88,7 +88,7 @@ void swap(stack_t **head, unsigned int line_number)
 
 	first = *head;
 	second = first->next;
-	temp = first->n
+	temp = first->n;
 
 	first->n = second->n;
 	second->n = temp;
@@ -104,21 +104,25 @@ void swap(stack_t **head, unsigned int line_number)
 
 void add(stack_t **head, unsigned int line_number)
 {
+	stack_t *top, *second;
+	int first_value, second_value, sum;
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack_t *top = *head;
-	int first_value = top->n;
-	stack_t *second = top->next;
-	int second_value = second->n;
+	top = *head;
+	first_value = top->n;
+	second = top->next;
+	second_value = second->n;
 	*head = second->next;
+
 	free(second);
 	free(top);
 
-	int sum = first_value + second_value;
+	sum = first_value + second_value;
 
 	push(head, sum);
 }
