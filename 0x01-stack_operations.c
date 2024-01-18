@@ -32,16 +32,15 @@ void push(stack_t **head, unsigned int line_number)
 	}
 
 	temp->n = value;
+	temp->prev = NULL;
 
 	if (*head == NULL)
 	{
 		*head = temp;
 		(*head)->next = NULL;
-		(*head)->prev = NULL;
 		return;
 	}
 
 	temp->next = *head;
-	temp->prev = NULL;
 	*head = temp;
 }
