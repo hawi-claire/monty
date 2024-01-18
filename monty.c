@@ -34,6 +34,8 @@ int main(int argc, char *argv[])
 	} while (bytes_read != -1);
 
 	free(lineptr);
+	free_stack(stack);
+	fclose(monty_file);
 
 	return (0);
 }
@@ -126,7 +128,6 @@ char *get_instruction(char *s)
 {
 	char *token, *opcode;
 
-	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
 
 	/* todo: the string opcode should be freed by the caller */
@@ -136,10 +137,10 @@ char *get_instruction(char *s)
 		exit(EXIT_FAILURE);
 	}
 
-	token = strtok(s, " ");
+	token = strtok(s, " \n");
 	opcode = strcpy(opcode, token);
 
-	token = strtok(NULL, " ");
+	token = strtok(NULL, " \n");
 
 	if (token)
 	{

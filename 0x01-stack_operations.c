@@ -63,3 +63,19 @@ void push(stack_t **head, unsigned int line_number)
 	temp->next = *head;
 	*head = temp;
 }
+
+/**
+ * free_stack - frees a stack_t stack
+ * @head: head of a stack_t stack
+ *
+ * Return: NULL
+ */
+
+void free_stack(stack_t *head)
+{
+	if (!head)
+		return;
+
+	free_stack(head->next);
+	free(head);
+}
