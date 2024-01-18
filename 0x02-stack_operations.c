@@ -79,8 +79,6 @@ void f_div(stack_t **head, unsigned int line_number)
 	{
 
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-
-		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		free_global_items_and_exit();
 	}
 
