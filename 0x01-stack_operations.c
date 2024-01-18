@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int global_push_value;
+
 /**
  * initialize_global_value - initiliazes global variable value
  * @value: number
@@ -9,7 +11,7 @@
 
 int initialize_global_value(int value)
 {
-	int global_push_value = value;
+	global_push_value = value;
 
 	return (global_push_value);
 }

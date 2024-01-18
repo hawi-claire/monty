@@ -106,6 +106,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 		if (strs_match == 0)
 		{
 			instruction[i].f(stack, line_number);
+			return;
 		}
 	}
 
