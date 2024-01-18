@@ -177,11 +177,6 @@ char *get_instruction(char *s, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_global_items_and_exit();
 	}
-	else if (token && strcmp(opcode, "nop") == 0)
-	{
-		fprintf(stderr, "L%u: usage: nop\n", line_number);
-		free_global_items_and_exit();
-	}
 
 	return (opcode);
 }
