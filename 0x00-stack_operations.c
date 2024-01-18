@@ -9,6 +9,8 @@
 */
 void pall(stack_t **head, unsigned int line_number)
 {
+	(void)line_number;
+
 	stack_t *current = *head;
 
 	while (current != NULL)
@@ -22,15 +24,15 @@ void pall(stack_t **head, unsigned int line_number)
 /**
  * pint - prints value at the top
  * @head: stack head
- * @line: line number
+ * @line_number: line number
  * Return: no return
 */
 
-void pint(stack_t **head, unsigned int line)
+void pint(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", line);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -57,9 +59,7 @@ void pop(stack_t **head, unsigned int line_number)
 	}
 
 	stack_t *temp = *head;
-
 	*head = temp->next;
-
 	free(temp);
 }
 
