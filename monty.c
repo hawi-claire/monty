@@ -145,7 +145,7 @@ char *get_instruction(char *s)
 	}
 
 	token = strtok(s, " \n");
-	
+
 	if (!token)
 		return (NULL);
 
