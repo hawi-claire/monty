@@ -162,10 +162,12 @@ char *get_instruction(char *s, unsigned int line_number)
 	opcode = strcpy(opcode, token);
 	token = strtok(NULL, " \n");
 
-	if ((token && isdigit(token[0])) || token[0] == '-' && isdigit(token[1]))
+	if (token && isdigit(token[0]))
 	{
 		initialize_global_value(atoi(token));
 	}
+	else if (token && (token[0] == '-' && isdigit(token[1])))
+		initialize_global_value(atoi(token));
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
