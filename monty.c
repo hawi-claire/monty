@@ -141,7 +141,7 @@ char *get_instruction(char *s, unsigned int line_number)
 
 	if (!opcode)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -160,7 +160,12 @@ char *get_instruction(char *s, unsigned int line_number)
 	}
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
-		fprintf(stderr, "L%u: usage: push integer", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else if (token && strcmp(opcode, "nop") == 0)
+	{
+		fprintf(stderr, "L%u: usage: nop\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
