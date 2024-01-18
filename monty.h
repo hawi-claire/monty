@@ -53,6 +53,7 @@ char *get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
 void execute(char *opcode, int line_number, stack_t **stack);
+int initialize_global_value(int value);
 
 /*--- STACK OPERATIONS ----*/
 void pop(stack_t **stack, unsigned int line_number);

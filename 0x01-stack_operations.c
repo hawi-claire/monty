@@ -1,6 +1,20 @@
 #include "monty.h"
 
 /**
+ * initialize_global_value - initiliazes global variable value
+ * @value: number
+ *
+ * Return: number
+*/
+
+int initialize_global_value(int value)
+{
+	int global_push_value = value;
+
+	return (global_push_value);
+}
+
+/**
   *nop- does nothing
   *@head: stack head
   *@line_number: line_number
