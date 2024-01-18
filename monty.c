@@ -125,7 +125,7 @@ char *get_instruction(char *s)
 {
 	char *token, *opcode;
 
-	int global_push_value;
+	int global_push_value = 0;
 
 	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
