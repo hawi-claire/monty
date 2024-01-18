@@ -134,7 +134,6 @@ char *get_instruction(char *s)
 
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
 
-	/* todo: the string opcode should be freed by the caller */
 	if (!opcode)
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -146,7 +145,7 @@ char *get_instruction(char *s)
 
 	token = strtok(NULL, " \n");
 
-	if (token)
+	if (token && isdigit(token[0]))
 	{
 		initialize_global_value(atoi(token));
 	}
