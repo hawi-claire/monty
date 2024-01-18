@@ -151,5 +151,7 @@ char *get_instruction(char *s)
 		initialize_global_value(atoi(token));
 	}
 
+	printf("opcode: %s --> value: %d", opcode, atoi(token));
+
 	return (opcode);
 }
