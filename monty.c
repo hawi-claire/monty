@@ -104,17 +104,21 @@ void execute(char *opcode, int line_number, stack_t **stack)
 {
 	int i, strs_match;
 
-	instruction_t instruction[7] = {
+	instruction_t instruction[11] = {
 		{"push", push},
 		{"pop", pop},
 		{"pall", pall},
 		{"pint", pint},
 		{"swap", swap},
 		{"add", add},
-		{"nop", nop}
+		{"nop", nop},
+		{"pchar", pchar}
 	};
 
-	for (i = 0; i < 7; i++)
+	if (opcode[0] == '#')
+		return;
+
+	for (i = 0; i < 11; i++)
 	{
 		strs_match = strcmp(opcode, instruction[i].opcode);
 
@@ -126,7 +130,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-	exit(EXIT_FAILURE);
+	free_global_items_and_exit();
 }
 
 
@@ -147,8 +151,7 @@ char *get_instruction(char *s, unsigned int line_number)
 	if (!opcode)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 
 	token = strtok(s, " \n");
@@ -157,24 +160,21 @@ char *get_instruction(char *s, unsigned int line_number)
 		return (NULL);
 
 	opcode = strcpy(opcode, token);
-
 	token = strtok(NULL, " \n");
 
-	if (token && isdigit(token[0]))
+	if ((token && isdigit(token[0])) || token[0] == '-' && isdigit(token[1]))
 	{
 		initialize_global_value(atoi(token));
 	}
 	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 	else if (token && strcmp(opcode, "nop") == 0)
 	{
 		fprintf(stderr, "L%u: usage: nop\n", line_number);
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 
 	return (opcode);

@@ -45,8 +45,7 @@ void push(stack_t **head, unsigned int line_number)
 	if (!temp)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_global_items();
-		exit(EXIT_FAILURE);
+		free_global_items_and_exit();
 	}
 
 	temp->n = global_items.value;
