@@ -1,15 +1,16 @@
 #include "monty.h"
 /**
- * f_pop - prints the top
+ * pop - prints the top
  * @head: stack head
- * @counter: line_number
+ * @line_number: line_number
+ *
  * Return: none
 */
-void f_pop(stack_t **head, unsigned int counter)
+void pop(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n", counter);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

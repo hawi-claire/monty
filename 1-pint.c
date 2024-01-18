@@ -1,15 +1,15 @@
 #include "monty.h"
 /**
- * f_pint - prints value at the top
+ * pint - prints value at the top
  * @head: stack head
  * @line: line number
  * Return: no return
 */
-void f_pint(stack_t **head, unsigned int line)
+void pint(stack_t **head, unsigned int line)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 
