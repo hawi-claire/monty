@@ -27,15 +27,15 @@ int main(int argc, char *argv[])
 
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);
+		line_number++;
 
 		if (bytes_read > 1)
 		{
-			opcode = get_instruction(lineptr);
+			opcode = get_instruction(lineptr, line_number);
 
 			if (!opcode)
 				continue;
 
-			line_number++;
 			execute(opcode, line_number, &stack);
 			free(opcode);
 		}
@@ -128,11 +128,12 @@ void execute(char *opcode, int line_number, stack_t **stack)
 /**
  * get_instruction - gets opcode and value
  * @s: the string to extrac instruction from
+ * @line_number: current instruction
  *
  * Return: a structure containing opcode and value
 */
 
-char *get_instruction(char *s)
+char *get_instruction(char *s, unsigned int line_number)
 {
 	char *token, *opcode;
 
@@ -156,6 +157,11 @@ char *get_instruction(char *s)
 	if (token && isdigit(token[0]))
 	{
 		initialize_global_value(atoi(token));
+	}
+	else if ((!token || isdigit(token[0]) == 0) && strcmp(opcode, "push") == 0)
+	{
+		fprintf(stderr, "L%u: usage: push integer", line_number);
+		exit(EXIT_FAILURE);
 	}
 
 	return (opcode);

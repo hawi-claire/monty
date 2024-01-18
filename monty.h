@@ -49,7 +49,7 @@ typedef struct instruction_s
 } instruction_t;
 
 /*--- UTILITY FUNCTIONS ---*/
-char *get_instruction(char *s);
+char *get_instruction(char *s, unsigned int line_number);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
 void execute(char *opcode, int line_number, stack_t **stack);
