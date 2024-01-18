@@ -41,29 +41,29 @@ void add(stack_t **head, unsigned int line_number)
 
 void sub(stack_t **head, unsigned int line_number)
 {
-        stack_t *top, *second;
-        int first_value, second_value, difference;
+	stack_t *top, *second;
+	int first_value, second_value, difference;
 
-        if (*head == NULL || (*head)->next == NULL)
-        {
-                fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
-                free_global_items_and_exit();
-                exit(EXIT_FAILURE);
-        }
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
+		free_global_items_and_exit();
+		exit(EXIT_FAILURE);
+	}
 
-        top = *head;
-        first_value = top->n;
-        second = top->next;
-        second_value = second->n;
-        *head = second->next;
+	top = *head;
+	first_value = top->n;
+	second = top->next;
+	second_value = second->n;
+	*head = second->next;
 
-        free(second);
-        free(top);
+	free(second);
+	free(top);
 
-        difference = second_value - first_value;
-        global_items.value = difference;
+	difference = second_value - first_value;
+	global_items.value = difference;
 
-        push(head, 0);
+	push(head, 0);
 }
 
 /**
@@ -74,29 +74,29 @@ void sub(stack_t **head, unsigned int line_number)
 */
 void f_div(stack_t **head, unsigned int line_number)
 {
-        stack_t *top, *second;
-        int first_value, second_value, quotient;
+	stack_t *top, *second;
+	int first_value, second_value, quotient;
 
-        if (*head == NULL || (*head)->next == NULL)
-        {
-                fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
-                free_global_items_and_exit();
-                exit(EXIT_FAILURE);
-        }
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		printf(stderr, "L%u: can't div, stack too short\n", line_number);
+		free_global_items_and_exit();
+		exit(EXIT_FAILURE);
+	}
 
-        top = *head;
-        first_value = top->n;
-        second = top->next;
-        second_value = second->n;
-        *head = second->next;
+	top = *head;
+	first_value = top->n;
+	second = top->next;
+	second_value = second->n;
+	*head = second->next;
 
-        free(second);
-        free(top);
+	free(second);
+	free(top);
 
-        quotient = second_value / first_value;
-        global_items.value = quotient;
+	quotient = second_value / first_value;
+	global_items.value = quotient;
 
-        push(head, 0);
+	push(head, 0);
 }
 
 /**
