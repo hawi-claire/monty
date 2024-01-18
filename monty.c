@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	ssize_t bytes_read = 0;
 	char *lineptr = NULL;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
 	stack = NULL;
 
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 		bytes_read = getline(&lineptr, &n, monty_file);
 		operation = get_instruction(lineptr);
 		line_number++;
-		execute(operation, line_number);
+		execute(operation, line_number, &stack);
 		free(operation.opcode);
 	} while (bytes_read != -1);
 
@@ -79,10 +80,12 @@ void handle_args(int argc)
  * execute - executes a stack operation
  * @operation: a struct that contains opcode and value
  * @line_number: the current operation
+ * @stack: the head node of a stack_t stack
+ *
  * Return: Nothing
 */
 
-void execute(operation_t operation, int line_number)
+void execute(operation_t operation, int line_number, stack_t **stack)
 {
 	int i, strs_match;
 
@@ -103,7 +106,7 @@ void execute(operation_t operation, int line_number)
 		if (strs_match == 0)
 		{
 			value = operation.value;
-			instruction[i].f(&stack, line_number);
+			instruction[i].f(stack, line_number);
 		}
 	}
 

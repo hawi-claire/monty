@@ -59,6 +59,7 @@ void replace_newline_char(char *s);
 operation_t get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
+void execute(operation_t operation, int line_number, stack_t **stack);
 
 /*--- STACK OPERATIONS ----*/
 void pop(stack_t **stack, unsigned int line_number);
@@ -70,7 +71,6 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 
 /*--- GLOBAL VARIABLES ---*/
-extern stack_t *stack;
 extern int value;
 
 #endif /* MONTY_H */
