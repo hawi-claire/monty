@@ -104,7 +104,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 {
 	int i, strs_match;
 
-	instruction_t instruction[7] = {
+	instruction_t instruction[11] = {
 		{"push", push},
 		{"pop", pop},
 		{"pall", pall},
@@ -124,6 +124,9 @@ void execute(char *opcode, int line_number, stack_t **stack)
 			return;
 		}
 	}
+
+	if (opcode[0] == '#')
+		nop(stack, line_number);
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
