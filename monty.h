@@ -48,7 +48,6 @@ typedef struct instruction_s
 } instruction_t;
 
 /*--- UTILITY FUNCTIONS ---*/
-void replace_newline_char(char *s);
 char *get_instruction(char *s);
 FILE *open_monty_file(const char *filename);
 void handle_args(int argc);
@@ -63,5 +62,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *head);
 
 #endif /* MONTY_H */
