@@ -56,7 +56,7 @@ typedef struct instruction_s
 typedef struct global_items_s
 {
 	stack_t *head;
-	char *lineptr;
+	char **lineptr;
 	FILE *file;
 	int value;
 } global_items_t;

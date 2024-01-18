@@ -21,14 +21,14 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
 
-	global_items.file = monty_file;
-	global_items.lineptr = lineptr;
+	global_items.lineptr = &lineptr;
 	global_items.head = stack;
 	stack = NULL;
 
 	handle_args(argc);
 
 	monty_file = open_monty_file(argv[1]);
+	global_items.file = monty_file;
 
 	do {
 		bytes_read = getline(&lineptr, &n, monty_file);

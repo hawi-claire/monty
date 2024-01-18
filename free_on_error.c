@@ -9,6 +9,6 @@
 void free_global_items(void)
 {
 	fclose(global_items.file);
-	free(global_items.lineptr);
+	free(*global_items.lineptr);
 	free_stack(global_items.head); /* test whether this works */
 }
