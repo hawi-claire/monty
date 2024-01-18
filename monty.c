@@ -31,6 +31,10 @@ int main(int argc, char *argv[])
 		if (bytes_read > 1)
 		{
 			opcode = get_instruction(lineptr);
+
+			if (!opcode)
+				continue;
+
 			line_number++;
 			execute(opcode, line_number, &stack);
 			free(opcode);
@@ -141,6 +145,10 @@ char *get_instruction(char *s)
 	}
 
 	token = strtok(s, " \n");
+	
+	if (!token)
+		return (NULL);
+
 	opcode = strcpy(opcode, token);
 
 	token = strtok(NULL, " \n");
@@ -149,8 +157,6 @@ char *get_instruction(char *s)
 	{
 		initialize_global_value(atoi(token));
 	}
-
-	printf("operation: %s\n", opcode);
 
 	return (opcode);
 }
