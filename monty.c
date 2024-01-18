@@ -62,7 +62,7 @@ FILE *open_monty_file(const char *filename)
 
 	if (monty_file == NULL)
 	{
-		fprintf(stderr, "Error opening file: %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
