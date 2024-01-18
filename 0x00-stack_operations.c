@@ -127,6 +127,7 @@ void add(stack_t **head, unsigned int line_number)
 	free(top);
 
 	sum = first_value + second_value;
+	global_items.value = sum;
 
-	push(head, sum);
+	push(head, 0);
 }
