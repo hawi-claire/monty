@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <sys/types.h>
 
 /*--- MACROS ---*/
 #define BUFF_SIZE 1024
