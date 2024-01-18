@@ -73,6 +73,6 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 
 /*--- GLOBAL VARIABLES ---*/
-extern int value;
+extern int global_push_value;
 
 #endif /* MONTY_H */

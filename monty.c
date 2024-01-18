@@ -126,8 +126,8 @@ operation_t get_instruction(char *s)
 {
 	operation_t operation;
 	char *token, *opcode;
-	
-	int value = 0;
+
+	int global_push_value = 0;
 
 	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
@@ -147,10 +147,10 @@ operation_t get_instruction(char *s)
 
 	if (token)
 	{
-		value = atoi(token);
+		global_push_value = atoi(token);
 	}
 
 	operation.opcode = opcode;
-	operation.value = value;
+	operation.value = global_push_value;
 	return (operation);
 }

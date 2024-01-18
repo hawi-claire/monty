@@ -34,7 +34,7 @@ void push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	temp->n = value;
+	temp->n = global_push_value;
 	temp->prev = NULL;
 
 	if (*head == NULL)
