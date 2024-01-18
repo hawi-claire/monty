@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <string.h>
 
 /**
  * main - runs the monty program
@@ -105,7 +106,6 @@ void execute(operation_t operation, int line_number, stack_t **stack)
 
 		if (strs_match == 0)
 		{
-			value = operation.value;
 			instruction[i].f(stack, line_number);
 		}
 	}
@@ -126,7 +126,8 @@ operation_t get_instruction(char *s)
 {
 	operation_t operation;
 	char *token, *opcode;
-	int value;
+	
+	int value = 0;
 
 	replace_newline_char(s);
 	opcode = malloc(sizeof(char) * BUFF_SIZE);
@@ -147,13 +148,9 @@ operation_t get_instruction(char *s)
 	if (token)
 	{
 		value = atoi(token);
-		operation.value = value;
-	}
-	else
-	{
-		operation.value = 0;
 	}
 
 	operation.opcode = opcode;
+	operation.value = value;
 	return (operation);
 }
