@@ -104,7 +104,7 @@ void execute(char *opcode, int line_number, stack_t **stack)
 {
 	int i, strs_match;
 
-	instruction_t instruction[12] = {
+	instruction_t instruction[15] = {
 		{"push", push},
 		{"pop", pop},
 		{"pall", pall},
@@ -116,7 +116,10 @@ void execute(char *opcode, int line_number, stack_t **stack)
 		{"div", f_div},
 		{"mul", mul},
 		{"sub", sub},
-		{"mod", mod}
+		{"mod", mod},
+		{"pstr", f_pstr},
+		{"rotr", f_rotr},
+		{"rotl", f_rotl}
 	};
 
 	if (opcode[0] == '#')
