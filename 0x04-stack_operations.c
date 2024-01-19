@@ -34,17 +34,21 @@ void pchar(stack_t **stack, unsigned int line_number)
 */
 void f_pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current;
+	int ascii_value;
+
+	current = *stack;
+	(void)line_number;
+
 	if (*stack == NULL)
 	{
 		putchar('\n');
 		return;
 	}
 
-	stack_t *current = *stack;
-
 	while (current != NULL)
 	{
-		int ascii_value = current->n;
+		ascii_value = current->n;
 
 		if (ascii_value >= 0 && ascii_value <= 127)
 		{
@@ -72,16 +76,15 @@ void f_pstr(stack_t **stack, unsigned int line_number)
  */
 void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *tail;
+	stack_t *tail, *temp, *second;
 
 	tail = *stack;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
-	stack_t *temp = *stack;
-	stack_t *second = (*stack)->next;
-
+	temp = *stack;
+	second = (*stack)->next;
 	*stack = second;
 
 	temp->next = second->next;
@@ -89,7 +92,7 @@ void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number)
 
 	if (temp->next == NULL)
 		(*stack)->prev = temp;
-		else
+	else
 		temp->next->prev = temp;
 }
 
@@ -101,20 +104,20 @@ void f_rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_number)
  */
 void f_rotr(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
+	stack_t *tail;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
-	stack_t *tail = *stack;
+	tail = *stack;
 
 	while (tail->next != NULL)
-	tail = tail->next;
-
-	tail->prev->next = NULL;
-
-	tail->next = *stack;
-	*stack = tail;
-
-	(*stack)->prev = tail->prev;
-	tail->prev = NULL;
+	{
+		tail = tail->next;
+		tail->prev->next = NULL;
+		tail->next = *stack;
+		*stack = tail;
+		(*stack)->prev = tail->prev;
+		tail->prev = NULL;
+	}
 }
